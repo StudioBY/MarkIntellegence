@@ -101,6 +101,18 @@ h2.title { font-size: clamp(30px,4.5vw,46px); font-weight: 700; line-height: 1.1
 .dvi-item strong { display: block; font-size: 16px; margin-bottom: 4px; font-family: var(--lat); }
 .dvi-item p { font-size: 14px; color: var(--gray); line-height: 1.65; }
 
+/* pillars */
+.pillars { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 64px; padding-top: 56px; border-top: 1px solid var(--line-l); }
+.pillar { padding: 0 8px; }
+.pillar-num { font-family: var(--mono); font-size: 13px; color: var(--gray-l); letter-spacing: .1em; margin-bottom: 14px; }
+.pillar h3 { font-size: 21px; font-weight: 700; margin-bottom: 12px; }
+.pillar p { font-size: 14.5px; color: var(--gray); line-height: 1.7; }
+
+/* audiences */
+.aud-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 48px; max-width: 820px; margin-left: auto; margin-right: auto; }
+.aud { background: #fff; border: 1px solid var(--line-l); padding: 12px 22px; font-size: 14.5px; color: var(--ink); transition: all .2s; }
+.aud:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+
 /* methodology */
 .meth-flow { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-top: 52px; }
 .meth-card { background: #fff; border: 1px solid var(--line-l); padding: 30px 24px; cursor: pointer; transition: all .25s; border-top: 3px solid transparent; }
@@ -152,44 +164,33 @@ footer p { font-family: var(--mono); font-size: 11px; color: var(--gray); letter
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s, transform .7s; }
 .reveal.vis { opacity: 1; transform: translateY(0); }
 
-/* CONTACT MODAL */
-.modal-overlay {
-  position: fixed; inset: 0; z-index: 200;
-  background: rgba(15,15,15,0.7); backdrop-filter: blur(6px);
-  display: none; align-items: center; justify-content: center; padding: 24px;
+/* CONTACT SECTION */
+.contact-section { background: var(--dark); position: relative; z-index: 1; border-top: 1px solid var(--line-d); }
+.contact-inner { max-width: 1100px; margin: 0 auto; padding: 100px 64px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: start; }
+.contact-left h2 { font-size: clamp(30px,4vw,46px); font-weight: 700; color: #fff; margin-bottom: 20px; }
+.contact-lead { font-size: 17px; color: var(--gray-l); line-height: 1.8; margin-bottom: 40px; }
+.contact-office { border-top: 1px solid var(--line-d); padding-top: 24px; }
+.contact-office-label { font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--gray); margin-bottom: 10px; }
+.contact-office-text { font-size: 15px; color: #ddd; line-height: 1.7; }
+.contact-form { display: flex; flex-direction: column; gap: 14px; }
+.cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.contact-form input, .contact-form select, .contact-form textarea {
+  font-family: var(--heb); font-size: 15px;
+  border: 1px solid var(--line-d); background: var(--dark2);
+  color: #eee; padding: 14px 16px; outline: none; resize: vertical; width: 100%;
 }
-.modal-overlay.open { display: flex; }
-.modal {
-  background: var(--light); color: var(--ink);
-  width: 100%; max-width: 460px; padding: 44px 40px;
-  position: relative; box-shadow: 0 30px 80px rgba(0,0,0,.4);
-  animation: modalIn .3s ease;
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--gray); }
+.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: #666; }
+.contact-form select { color: var(--gray); cursor: pointer; }
+.contact-form select:valid { color: #eee; }
+.cf-send {
+  background: #fff; color: var(--ink); border: none;
+  padding: 15px; font-family: var(--heb); font-weight: 700; font-size: 15px;
+  cursor: pointer; transition: opacity .2s; margin-top: 4px;
 }
-@keyframes modalIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-.modal-close {
-  position: absolute; top: 16px; left: 16px;
-  background: none; border: none; font-size: 17px; color: var(--gray);
-  cursor: pointer; padding: 6px;
-}
-.modal-close:hover { color: var(--ink); }
-.modal-logo { font-size: 18px; margin-bottom: 14px; }
-.modal-title { font-size: 26px; font-weight: 700; margin-bottom: 14px; }
-.modal-info { font-size: 14px; color: var(--gray); line-height: 1.9; margin-bottom: 24px; border-bottom: 1px solid var(--line-l); padding-bottom: 20px; }
-.modal-form { display: flex; flex-direction: column; gap: 12px; }
-.modal-form input, .modal-form textarea {
-  font-family: var(--heb); font-size: 14px;
-  border: 1px solid var(--line-l); background: #fff;
-  padding: 12px 14px; outline: none; resize: vertical;
-}
-.modal-form input:focus, .modal-form textarea:focus { border-color: var(--ink); }
-.modal-send {
-  background: var(--ink); color: #fff; border: none;
-  padding: 13px; font-family: var(--heb); font-weight: 700; font-size: 14px;
-  cursor: pointer; transition: opacity .2s;
-}
-.modal-send:hover { opacity: .85; }
-.modal-sent { display: none; font-size: 14px; color: var(--ink); background: #eae7df; padding: 12px 14px; text-align: center; }
-.modal-sent.show { display: block; }
+.cf-send:hover { opacity: .85; }
+.cf-sent { display: none; font-size: 14px; color: #ddd; background: var(--dark2); border: 1px solid var(--line-d); padding: 13px 16px; text-align: center; }
+.cf-sent.show { display: block; }
 
 @media (max-width: 950px) {
   nav { padding: 0 20px; }
@@ -199,6 +200,9 @@ footer p { font-family: var(--mono); font-size: 11px; color: var(--gray); letter
   .counter-cell { border-left: none; border-bottom: 1px solid var(--line-d); }
   .section-inner { padding: 60px 24px; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .pillars { grid-template-columns: 1fr; gap: 32px; }
+  .contact-inner { grid-template-columns: 1fr; gap: 44px; padding: 60px 24px; }
+  .cf-row { grid-template-columns: 1fr; }
   .meth-flow { grid-template-columns: 1fr 1fr; }
   .plat-inner { grid-template-columns: 1fr; gap: 40px; padding: 56px 24px; }
   footer { flex-direction: column; gap: 12px; padding: 26px 24px; }
@@ -215,9 +219,8 @@ footer p { font-family: var(--mono); font-size: 11px; color: var(--gray); letter
     <a href="#about">אודות</a>
     <a href="#methodology">מתודולוגיה</a>
     <a href="#platforms">פלטפורמות</a>
-    <a href="#vision">חזון</a>
+    <a href="#contact">צור קשר</a>
   </div>
-  <button class="nav-cta" onclick="openContact()">צור קשר</button>
 </nav>
 
 <main>
@@ -275,6 +278,48 @@ footer p { font-family: var(--mono); font-size: 11px; color: var(--gray); letter
         <div class="dvi-item"><div class="dvi-badge">I</div><div><strong>Intelligence</strong><p>מפענח מגמות, מגדיר סיבתיות ומתווה את הצעד האסטרטגי הבא.</p></div></div>
         <div class="dvi-item"><div class="dvi-badge">→</div><div><strong>Decision</strong><p>ודאות אופרטיבית. פעולה מהירה ובטוחה לדרג הניהולי.</p></div></div>
       </div>
+    </div>
+
+    <!-- Three pillars -->
+    <div class="pillars reveal">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <h3>דאטה מוסמך</h3>
+        <p>אנו נשענים בלעדית על מקורות מידע רשמיים, ציבוריים ומקצועיים. בלי הערכות אמורפיות, בלי ספקולציות. רק נתונים שקרו באמת, עם שרשרת אימות מתועדת לכל שכבה.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <h3>טכנולוגיה אנליטית</h3>
+        <p>מודלים סטטיסטיים, הצלבה רב-מקורית וזיקוק קנייני שהופכים מאות משתנים מורכבים לכדי מדד סינתטי אחד, ברור וברי-השוואה. מנוע אחיד, ורטיקלים רבים.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <h3>מומחיות אנושית</h3>
+        <p>מאחורי כל מדד עומדים אישור אנושי, שיקול דעת והבנה עמוקה של השטח. הטכנולוגיה מזקקת, המומחיות מוודאת ומעניקה הקשר. כך תובנה הופכת להחלטה.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section class="light-section" id="audiences" style="background:#f0eee9;">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;max-width:680px;margin:0 auto;">
+      <span class="eyebrow">Who We Serve</span>
+      <h2 class="title">מי מקבל בהירות</h2>
+      <p class="sub" style="margin:0 auto;">מקבלי החלטות שנדרשים לפעול על בסיס דאטה מורכב, מבוזר או סותר. אנו הופכים את הרעש הזה לוודאות אופרטיבית.</p>
+    </div>
+    <div class="aud-grid reveal">
+      <div class="aud">ראשי רשויות</div>
+      <div class="aud">גופים ציבוריים</div>
+      <div class="aud">יזמים וקבלנים</div>
+      <div class="aud">משקיעים ומשקיעות</div>
+      <div class="aud">גופי מימון וחיתום</div>
+      <div class="aud">מותגים ומפרסמים</div>
+      <div class="aud">סוכנויות מדיה</div>
+      <div class="aud">יוצרי תוכן</div>
+      <div class="aud">אנשי מקצוע</div>
+      <div class="aud">ארגונים ותאגידים</div>
     </div>
   </div>
 </section>
@@ -455,7 +500,7 @@ footer p { font-family: var(--mono); font-size: 11px; color: var(--gray); letter
   </div>
 </section>
 
-<!-- CLOSING -->
+<!-- CLOSING TAGLINE -->
 <section class="closing" id="vision">
   <div class="closing-inner reveal">
     <span class="eyebrow" style="color:var(--gray-l);">The Vision</span>
@@ -468,31 +513,50 @@ footer p { font-family: var(--mono); font-size: 11px; color: var(--gray); letter
   </div>
 </section>
 
-<footer>
-  <p>© 2026 MARK INTELLIGENCE GROUP · ראש פינה ת.ד. 1568 · main@markintellegence.co.il</p>
-  <p style="direction:ltr;">MuniMark · ReMark · CovenantMark · TubeMark · InfluenceMark · SignalMark</p>
-</footer>
-
-<!-- CONTACT MODAL -->
-<div class="modal-overlay" id="contactModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeContact()">✕</button>
-    <div class="modal-logo" style="direction:ltr;font-family:var(--lat);"><span style="color:var(--red);font-weight:700;">Mark</span><span style="font-weight:500;"> Intelligence</span></div>
-    <h3 class="modal-title">צור קשר</h3>
-    <div class="modal-info">
-      <div>משרדים: ראש פינה ת.ד. 1568</div>
-      <div style="direction:ltr;">main@markintellegence.co.il</div>
+<!-- CONTACT SECTION -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-left reveal">
+      <span class="eyebrow" style="color:var(--gray-l);">Contact</span>
+      <h2>שנכיר לעומק?</h2>
+      <p class="contact-lead">נשמח לדעת איך נוכל לעזור, באחת מהפלטפורמות שלנו, או בפיתוח התאמות לארגון שלך.</p>
+      <div class="contact-office">
+        <div class="contact-office-label">משרדים</div>
+        <div class="contact-office-text">ראש פינה, הגליל העליון<br>ת.ד. 1568, 1200000</div>
+      </div>
     </div>
-    <div class="modal-form">
-      <input type="text" id="cf-name" placeholder="שם מלא">
-      <input type="email" id="cf-email" placeholder="אימייל">
-      <input type="tel" id="cf-phone" placeholder="טלפון">
-      <textarea id="cf-msg" rows="4" placeholder="במה נוכל לעזור?"></textarea>
-      <button class="modal-send" onclick="sendContact()">שליחה</button>
-      <div class="modal-sent" id="cfSent">תודה! ההודעה נשלחה. נחזור אליך בהקדם.</div>
+
+    <div class="contact-form reveal">
+      <div class="cf-row">
+        <input type="text" id="cf-name" placeholder="שם מלא">
+        <input type="text" id="cf-org" placeholder="שם הארגון">
+      </div>
+      <div class="cf-row">
+        <input type="email" id="cf-email" placeholder="דוא&quot;ל">
+        <input type="tel" id="cf-phone" placeholder="טלפון">
+      </div>
+      <select id="cf-topic">
+        <option value="" disabled selected>מהות הפנייה</option>
+        <option value="MuniMark">MuniMark</option>
+        <option value="ReMark">ReMark</option>
+        <option value="CovenantMark">CovenantMark</option>
+        <option value="TubeMark">TubeMark</option>
+        <option value="InfluenceMark">InfluenceMark</option>
+        <option value="SignalMark">SignalMark</option>
+        <option value="פיתוח והתאמה">פיתוח והתאמה</option>
+        <option value="אחר">אחר</option>
+      </select>
+      <textarea id="cf-msg" rows="4" placeholder="תרגישו חופשי לכתוב..."></textarea>
+      <button class="cf-send" onclick="sendContact()">שליחה</button>
+      <div class="cf-sent" id="cfSent">תודה! ההודעה נשלחה. נחזור אליך בהקדם.</div>
     </div>
   </div>
-</div>
+</section>
+
+<footer>
+  <p>© 2026 MARK INTELLIGENCE GROUP · ראש פינה, הגליל העליון · ת.ד. 1568, 1200000</p>
+  <p style="direction:ltr;">MuniMark · ReMark · CovenantMark · TubeMark · InfluenceMark · SignalMark</p>
+</footer>
 
 </main>
 
@@ -620,19 +684,19 @@ function setStep(el, i) {
   document.getElementById('methDetail').classList.add('open');
 }
 
-/* ═══ CONTACT MODAL ═══ */
-function openContact() { document.getElementById('contactModal').classList.add('open'); }
-function closeContact() { document.getElementById('contactModal').classList.remove('open'); }
-document.getElementById('contactModal').addEventListener('click', e => {
-  if (e.target === e.currentTarget) closeContact();
-});
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeContact(); });
+/* ═══ CONTACT FORM ═══ */
 function sendContact() {
   const name = document.getElementById('cf-name').value.trim();
+  const org = document.getElementById('cf-org').value.trim();
   const email = document.getElementById('cf-email').value.trim();
+  const phone = document.getElementById('cf-phone').value.trim();
+  const topic = document.getElementById('cf-topic').value;
   const msg = document.getElementById('cf-msg').value.trim();
-  const body = encodeURIComponent('שם: ' + name + '\nאימייל: ' + email + '\nטלפון: ' + document.getElementById('cf-phone').value.trim() + '\n\n' + msg);
-  window.location.href = 'mailto:main@markintellegence.co.il?subject=' + encodeURIComponent('פנייה מהאתר — ' + name) + '&body=' + body;
+  const body = encodeURIComponent(
+    'שם מלא: ' + name + '\nארגון: ' + org + '\nדוא"ל: ' + email + '\nטלפון: ' + phone +
+    '\nמהות הפנייה: ' + topic + '\n\n' + msg
+  );
+  window.location.href = 'mailto:main@markintelligence.co.il?subject=' + encodeURIComponent('פנייה מהאתר — ' + name) + '&body=' + body;
   document.getElementById('cfSent').classList.add('show');
 }
 

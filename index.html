@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mark Intelligence | From Data to Decisions</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Poppins:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --dark: #141414;
@@ -81,8 +81,8 @@ main { position: relative; z-index: 1; }
 .counters-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(5,1fr); }
 .counter-cell { padding: 44px 20px; text-align: center; border-left: 1px solid var(--line-d); }
 .counter-cell:last-child { border-left: none; }
-.counter-num { font-size: 42px; font-weight: 700; color: #fff; line-height: 1; direction: ltr; font-family: var(--lat); }
-.counter-num .suffix { color: var(--gray-l); font-size: 28px; }
+.counter-num { font-size: 42px; font-weight: 300; color: #fff; line-height: 1; direction: ltr; font-family: var(--lat); }
+.counter-num .suffix { color: var(--gray-l); font-size: 28px; font-weight: 300; }
 .counter-label { font-size: 14px; color: var(--gray-l); margin-top: 12px; }
 
 /* LIGHT SECTIONS */
@@ -142,7 +142,7 @@ h2.title { font-size: clamp(30px,4.5vw,46px); font-weight: 700; line-height: 1.1
 .plat-desc { font-size: 16px; line-height: 1.85; color: #444; margin-bottom: 28px; }
 .plat-counters { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 24px; }
 .pc { background: #fff; border: 1px solid var(--line-l); padding: 18px 14px; text-align: center; }
-.pc-num { font-size: 28px; font-weight: 700; line-height: 1; direction: ltr; color: var(--ink); font-family: var(--lat); }
+.pc-num { font-size: 28px; font-weight: 300; line-height: 1; direction: ltr; color: var(--ink); font-family: var(--lat); }
 .pc-label { font-size: 12px; color: var(--gray); margin-top: 7px; }
 .plat-benefit { font-size: 13.5px; color: var(--gray); border-right: 3px solid var(--ink); padding: 3px 15px 3px 0; line-height: 1.7; }
 .plat-chart { background: #fff; border: 1px solid var(--line-l); padding: 26px; box-shadow: 0 18px 44px rgba(0,0,0,.05); }
@@ -150,7 +150,7 @@ h2.title { font-size: clamp(30px,4.5vw,46px); font-weight: 700; line-height: 1.1
 canvas.pchart { width: 100%; display: block; }
 
 /* CLOSING */
-.closing { background: var(--dark); position: relative; z-index: 1; border-top: 1px solid var(--line-d); }
+.closing { background: transparent; position: relative; z-index: 1; border-top: 1px solid var(--line-d); }
 .closing-inner { max-width: 1000px; margin: 0 auto; padding: 110px 64px; text-align: center; }
 .closing h2 { font-size: clamp(28px,4vw,44px); color: #fff; margin-bottom: 24px; }
 .closing p { font-size: 17px; color: var(--gray-l); line-height: 1.85; max-width: 700px; margin: 0 auto 60px; }
@@ -165,7 +165,7 @@ footer p { font-family: var(--mono); font-size: 11px; color: var(--gray); letter
 .reveal.vis { opacity: 1; transform: translateY(0); }
 
 /* CONTACT SECTION */
-.contact-section { background: var(--dark); position: relative; z-index: 1; border-top: 1px solid var(--line-d); }
+.contact-section { background: transparent; position: relative; z-index: 1; border-top: 1px solid var(--line-d); }
 .contact-inner { max-width: 1100px; margin: 0 auto; padding: 100px 64px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: start; }
 .contact-left h2 { font-size: clamp(30px,4vw,46px); font-weight: 700; color: #fff; margin-bottom: 20px; }
 .contact-lead { font-size: 17px; color: var(--gray-l); line-height: 1.8; margin-bottom: 40px; }
@@ -214,7 +214,7 @@ footer p { font-family: var(--mono); font-size: 11px; color: var(--gray); letter
 <canvas id="particles"></canvas>
 
 <nav>
-  <div class="logo-wrap"><span class="logo-mark">Mark</span><span class="logo-rest">Intelligence</span></div>
+  <a href="#" class="logo-wrap" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" style="text-decoration:none;cursor:pointer;"><span class="logo-mark">Mark</span><span class="logo-rest">Intelligence</span></a>
   <div class="nav-links">
     <a href="#about">אודות</a>
     <a href="#methodology">מתודולוגיה</a>
@@ -707,7 +707,8 @@ function animate(fn, dur=1500) {
   function fr(ts) { if(!s)s=ts; const p=Math.min((ts-s)/dur,1); fn(1-Math.pow(1-p,3)); if(p<1)requestAnimationFrame(fr); }
   requestAnimationFrame(fr);
 }
-const INK='#171717', GRAY='#8a8a8a', GRID='rgba(23,23,23,0.08)';
+const INK='#3a3a3a', GRAY='#9a9a9a', GRID='rgba(23,23,23,0.06)';
+const GDARK='#2a2a2a', GMID='#7a7a7a', GLIGHT='#b8b8b8';
 
 /* MuniMark: animated score dials */
 function drawMuniDials(p) {
@@ -722,7 +723,7 @@ function drawMuniDials(p) {
     x.beginPath();
     x.arc(cx,cy,R,-Math.PI/2,-Math.PI/2+(d.v/100)*Math.PI*2*p);
     x.strokeStyle=INK; x.lineWidth=lw; x.lineCap='round'; x.stroke();
-    x.fillStyle=INK; x.font='700 '+(R*.62)+'px Poppins'; x.textAlign='center';
+    x.fillStyle=INK; x.font='300 '+(R*.62)+'px Poppins'; x.textAlign='center';
     x.fillText(Math.round(d.v*p), cx, cy+R*.22);
     x.font='12px Assistant'; x.fillStyle=GRAY;
     x.fillText(d.l, cx, cy+R+22);
@@ -768,12 +769,12 @@ function drawRemark(p) {
   x.beginPath();x.arc(cx,cy,R,0,Math.PI*2);x.strokeStyle='rgba(23,23,23,0.08)';x.lineWidth=lw;x.stroke();
   x.beginPath();x.arc(cx,cy,R,-Math.PI/2,-Math.PI/2+(58/100)*Math.PI*2*p);
   x.strokeStyle=INK;x.lineWidth=lw;x.lineCap='round';x.stroke();
-  x.fillStyle=INK;x.font='700 30px Poppins';x.textAlign='center';
+  x.fillStyle=INK;x.font='300 30px Poppins';x.textAlign='center';
   x.fillText(Math.round(58*p),cx,cy+9);
   x.font='11px Assistant';x.fillStyle=GRAY;x.fillText('ציון יציבות',cx,cy+R+20);
   /* headline number */
   x.textAlign='right';
-  x.fillStyle=INK;x.font='700 40px Poppins';
+  x.fillStyle=INK;x.font='300 40px Poppins';
   x.fillText((30.6*p).toFixed(1), W-160, 62);
   x.font='12px Assistant';x.fillStyle=GRAY;
   x.fillText('חודשי ספיגה · זמן מדף', W-160, 84);
@@ -788,7 +789,7 @@ function drawRemark(p) {
     const y=y0+i*gap;
     x.textAlign='right';x.fillStyle=INK;x.font='600 13px Assistant';
     x.fillText(b.l, W-24, y);
-    x.textAlign='left';x.fillStyle=INK;x.font='700 13px Poppins';
+    x.textAlign='left';x.fillStyle=INK;x.font='300 13px Poppins';
     x.fillText(Math.round(b.v*p)+'/100', bx, y);
     x.fillStyle='rgba(23,23,23,0.08)';
     x.fillRect(bx, y+8, bw, 5);
@@ -812,7 +813,7 @@ function drawCovenant(p) {
     x.strokeStyle=s.col;x.lineWidth=lw;x.stroke();
     a+=sw;
   });
-  x.fillStyle=INK;x.font='700 42px Poppins';x.textAlign='center';
+  x.fillStyle=INK;x.font='300 42px Poppins';x.textAlign='center';
   x.fillText(Math.round(93*p)+'%',cx,cy+8);
   x.font='12px Assistant';x.fillStyle=GRAY;x.fillText('עמידה בהתחייבויות',cx,cy+32);
   x.font='11px Assistant';x.textAlign='right';
@@ -842,7 +843,7 @@ function drawTube(p) {
     x.fillRect(bx-bw/2,pad.t+cH-h,bw,h);
   });
   if(p>0.9){
-    x.fillStyle=INK;x.font='700 12px Poppins';x.textAlign='center';
+    x.fillStyle=INK;x.font='300 12px Poppins';x.textAlign='center';
     x.fillText('31.3M',pad.l+6.5/7*cW,pad.t+cH-(31.3/35)*cH-8);
   }
   x.fillStyle=GRAY;x.font='9px IBM Plex Mono';x.textAlign='left';
@@ -868,7 +869,7 @@ function drawInfluence(p) {
   x.strokeStyle=INK;x.lineWidth=2.5;x.lineJoin='round';x.lineCap='round';x.stroke();
   const li=k-1;
   x.beginPath();x.arc(gx(li),gy(data[li]),5,0,Math.PI*2);x.fillStyle=INK;x.fill();
-  if(p>0.9){x.fillStyle=INK;x.font='700 12px Poppins';x.textAlign='right';x.fillText('48K+',gx(li)-10,gy(data[li])-10);}
+  if(p>0.9){x.fillStyle=INK;x.font='300 12px Poppins';x.textAlign='right';x.fillText('48K+',gx(li)-10,gy(data[li])-10);}
   x.fillStyle=GRAY;x.font='9px IBM Plex Mono';x.textAlign='left';
   x.fillText('DAILY NEW FOLLOWERS (K)',pad.l,12);
 }

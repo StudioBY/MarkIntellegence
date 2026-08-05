@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mark Intelligence | From Data to Decisions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Poppins:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dark: #141414;
+  --dark2: #1c1c1c;
+  --light: #f7f5f1;
+  --light2: #efede8;
+  --white: #ffffff;
+  --ink: #171717;
+  --gray: #6b6b6b;
+  --gray-l: #a3a3a3;
+  --line-d: #2a2a2a;
+  --line-l: #e2dfd8;
+  --red: #cc1010;
+  --mono: 'IBM Plex Mono', monospace;
+  --heb: 'Assistant', sans-serif;
+  --lat: 'Poppins', sans-serif;
+
+  --c-muni: #1e2a4a;
+  --c-remark: #cc1010;
+  --c-covenant: #0e9a8e;
+  --c-bond: #c8901a;
+  --c-tube: #d42020;
+  --c-influence: #d6259b;
+  --c-influence2: #2bb0e8;
+  --c-signal: #6b7280;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--dark);
+  color: #eee;
+  font-family: var(--heb);
+  direction: rtl;
+  overflow-x: hidden;
+}
+
+#particles { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; right: 0; left: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 44px; height: 70px;
+  background: rgba(20,20,20,0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line-d);
+  direction: ltr;
+}
+.logo-wrap { direction: ltr; display: flex; align-items: baseline; gap: 8px; font-family: var(--lat); }
+.logo-mark { font-weight: 700; font-size: 20px; color: var(--red); }
+.logo-rest { font-weight: 500; font-size: 20px; color: #fff; }
+.nav-links { display: flex; gap: 30px; }
+.nav-links a { color: var(--gray-l); text-decoration: none; font-size: 14px; transition: color .2s; }
+.nav-links a:hover { color: #fff; }
+.nav-cta {
+  background: #fff; color: var(--ink); border: none;
+  padding: 10px 26px; font-family: var(--heb); font-weight: 700;
+  font-size: 13px; cursor: pointer; transition: opacity .2s;
+}
+.nav-cta:hover { opacity: .85; }
+
+main { position: relative; z-index: 1; }
+
+/* HERO */
+.hero { min-height: 90vh; display: flex; align-items: center; padding: 130px 64px 90px; }
+.hero-inner { max-width: 880px; margin: 0 auto; text-align: center; width: 100%; }
+.hero-eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .28em; color: var(--gray-l); text-transform: uppercase; margin-bottom: 30px; }
+.hero h1 { font-size: clamp(42px, 7vw, 80px); font-weight: 700; line-height: 1.06; margin-bottom: 32px; color: #fff; }
+.hero-sub { font-size: 19px; color: var(--gray-l); line-height: 1.8; max-width: 640px; margin: 0 auto; }
+
+/* COUNTERS */
+.counters { background: rgba(28,28,28,.88); border-top: 1px solid var(--line-d); border-bottom: 1px solid var(--line-d); backdrop-filter: blur(6px); }
+.counters-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(5,1fr); }
+.counter-cell { padding: 44px 20px; text-align: center; border-left: 1px solid var(--line-d); }
+.counter-cell:last-child { border-left: none; }
+.counter-num { font-size: 42px; font-weight: 700; color: #fff; line-height: 1; direction: ltr; font-family: var(--lat); }
+.counter-num .suffix { color: var(--gray-l); font-size: 28px; }
+.counter-label { font-size: 14px; color: var(--gray-l); margin-top: 12px; }
+
+/* LIGHT SECTIONS */
+.light-section { background: var(--light); color: var(--ink); position: relative; z-index: 2; }
+.section-inner { max-width: 1200px; margin: 0 auto; padding: 96px 64px; }
+.eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: .24em; text-transform: uppercase; display: inline-block; margin-bottom: 18px; color: var(--gray); }
+h2.title { font-size: clamp(30px,4.5vw,46px); font-weight: 700; line-height: 1.1; margin-bottom: 20px; }
+.sub { font-size: 17px; line-height: 1.8; max-width: 640px; color: var(--gray); }
+
+/* about */
+.about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 70px; align-items: center; }
+.dvi { display: flex; flex-direction: column; gap: 12px; }
+.dvi-item { background: #fff; border: 1px solid var(--line-l); padding: 22px 26px; display: flex; gap: 18px; align-items: flex-start; transition: transform .25s, box-shadow .25s; }
+.dvi-item:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,.06); }
+.dvi-badge { min-width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; font-family: var(--lat); font-weight: 700; font-size: 15px; background: #f0eee9; color: var(--ink); }
+.dvi-item strong { display: block; font-size: 16px; margin-bottom: 4px; font-family: var(--lat); }
+.dvi-item p { font-size: 14px; color: var(--gray); line-height: 1.65; }
+
+/* methodology */
+.meth-flow { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-top: 52px; }
+.meth-card { background: #fff; border: 1px solid var(--line-l); padding: 30px 24px; cursor: pointer; transition: all .25s; border-top: 3px solid transparent; }
+.meth-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(0,0,0,.07); }
+.meth-card.active { border-top-color: var(--ink); }
+.meth-num { font-family: var(--mono); font-size: 10px; color: var(--gray-l); letter-spacing: .15em; margin-bottom: 12px; }
+.meth-phase { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .12em; margin-bottom: 10px; color: var(--gray); }
+.meth-card h3 { font-size: 17px; margin-bottom: 8px; }
+.meth-card p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+.meth-detail { background: #fff; border: 1px solid var(--line-l); margin-top: 12px; max-height: 0; overflow: hidden; transition: max-height .4s; }
+.meth-detail.open { max-height: 320px; }
+.meth-detail-inner { padding: 30px 36px; }
+.meth-detail-inner ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.meth-detail-inner li { display: flex; gap: 12px; font-size: 14.5px; color: var(--gray); line-height: 1.65; }
+.meth-detail-inner li::before { content: '●'; color: var(--ink); font-size: 7px; margin-top: 8px; flex-shrink: 0; }
+
+/* WAVE DIVIDER */
+.wave-div { background: var(--light); position: relative; z-index: 2; height: 110px; overflow: hidden; }
+.wave-div canvas { width: 100%; height: 100%; display: block; }
+
+/* PLATFORMS */
+.platform { position: relative; z-index: 2; background: var(--light); }
+.platform.alt { background: #fdfcfa; }
+.plat-inner { max-width: 1200px; margin: 0 auto; padding: 84px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.plat-logo { direction: ltr; font-family: var(--lat); font-size: 32px; margin-bottom: 6px; letter-spacing: -0.01em; }
+.plat-tagline { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 24px; display: block; color: var(--gray); }
+.plat-desc { font-size: 16px; line-height: 1.85; color: #444; margin-bottom: 28px; }
+.plat-counters { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 24px; }
+.pc { background: #fff; border: 1px solid var(--line-l); padding: 18px 14px; text-align: center; }
+.pc-num { font-size: 28px; font-weight: 700; line-height: 1; direction: ltr; color: var(--ink); font-family: var(--lat); }
+.pc-label { font-size: 12px; color: var(--gray); margin-top: 7px; }
+.plat-benefit { font-size: 13.5px; color: var(--gray); border-right: 3px solid var(--ink); padding: 3px 15px 3px 0; line-height: 1.7; }
+.plat-chart { background: #fff; border: 1px solid var(--line-l); padding: 26px; box-shadow: 0 18px 44px rgba(0,0,0,.05); }
+.plat-chart-title { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; color: var(--gray-l); text-transform: uppercase; margin-bottom: 16px; }
+canvas.pchart { width: 100%; display: block; }
+
+/* CLOSING */
+.closing { background: var(--dark); position: relative; z-index: 1; border-top: 1px solid var(--line-d); }
+.closing-inner { max-width: 1000px; margin: 0 auto; padding: 110px 64px; text-align: center; }
+.closing h2 { font-size: clamp(28px,4vw,44px); color: #fff; margin-bottom: 24px; }
+.closing p { font-size: 17px; color: var(--gray-l); line-height: 1.85; max-width: 700px; margin: 0 auto 60px; }
+.big-tagline { font-size: clamp(28px,5vw,58px); font-weight: 700; color: #fff; direction: ltr; font-family: var(--lat); }
+.big-tagline em { font-style: normal; color: var(--red); }
+.big-sub { font-size: clamp(15px,2vw,24px); color: var(--gray-l); font-family: var(--lat); margin-top: 8px; direction: ltr; }
+
+footer { background: var(--dark); border-top: 1px solid var(--line-d); padding: 32px 64px; position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; }
+footer p { font-family: var(--mono); font-size: 11px; color: var(--gray); letter-spacing: .08em; }
+
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s, transform .7s; }
+.reveal.vis { opacity: 1; transform: translateY(0); }
+
+/* CONTACT MODAL */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(15,15,15,0.7); backdrop-filter: blur(6px);
+  display: none; align-items: center; justify-content: center; padding: 24px;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--light); color: var(--ink);
+  width: 100%; max-width: 460px; padding: 44px 40px;
+  position: relative; box-shadow: 0 30px 80px rgba(0,0,0,.4);
+  animation: modalIn .3s ease;
+}
+@keyframes modalIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+.modal-close {
+  position: absolute; top: 16px; left: 16px;
+  background: none; border: none; font-size: 17px; color: var(--gray);
+  cursor: pointer; padding: 6px;
+}
+.modal-close:hover { color: var(--ink); }
+.modal-logo { font-size: 18px; margin-bottom: 14px; }
+.modal-title { font-size: 26px; font-weight: 700; margin-bottom: 14px; }
+.modal-info { font-size: 14px; color: var(--gray); line-height: 1.9; margin-bottom: 24px; border-bottom: 1px solid var(--line-l); padding-bottom: 20px; }
+.modal-form { display: flex; flex-direction: column; gap: 12px; }
+.modal-form input, .modal-form textarea {
+  font-family: var(--heb); font-size: 14px;
+  border: 1px solid var(--line-l); background: #fff;
+  padding: 12px 14px; outline: none; resize: vertical;
+}
+.modal-form input:focus, .modal-form textarea:focus { border-color: var(--ink); }
+.modal-send {
+  background: var(--ink); color: #fff; border: none;
+  padding: 13px; font-family: var(--heb); font-weight: 700; font-size: 14px;
+  cursor: pointer; transition: opacity .2s;
+}
+.modal-send:hover { opacity: .85; }
+.modal-sent { display: none; font-size: 14px; color: var(--ink); background: #eae7df; padding: 12px 14px; text-align: center; }
+.modal-sent.show { display: block; }
+
+@media (max-width: 950px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 110px 24px 60px; }
+  .counters-grid { grid-template-columns: 1fr 1fr; }
+  .counter-cell { border-left: none; border-bottom: 1px solid var(--line-d); }
+  .section-inner { padding: 60px 24px; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .meth-flow { grid-template-columns: 1fr 1fr; }
+  .plat-inner { grid-template-columns: 1fr; gap: 40px; padding: 56px 24px; }
+  footer { flex-direction: column; gap: 12px; padding: 26px 24px; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<nav>
+  <div class="logo-wrap"><span class="logo-mark">Mark</span><span class="logo-rest">Intelligence</span></div>
+  <div class="nav-links">
+    <a href="#about">אודות</a>
+    <a href="#methodology">מתודולוגיה</a>
+    <a href="#platforms">פלטפורמות</a>
+    <a href="#vision">חזון</a>
+  </div>
+  <button class="nav-cta" onclick="openContact()">צור קשר</button>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner reveal">
+    <div class="hero-eyebrow">From Data to Decisions</div>
+    <h1>מנתונים<br>לבהירות אסטרטגית</h1>
+    <p class="hero-sub">
+      בעידן של עודף מידע, הערך העסקי אינו גלום בנתונים עצמם. הוא גלום ביכולת לזהות את הסיגנל מתוך הרעש, ולתרגם מורכבות להחלטות אופרטיביות.
+    </p>
+  </div>
+</section>
+
+<!-- COUNTERS -->
+<div class="counters" id="countersStrip">
+  <div class="counters-grid">
+    <div class="counter-cell reveal">
+      <div class="counter-num"><span class="cnt" data-t="7" data-d="0">0</span></div>
+      <div class="counter-label">פלטפורמות</div>
+    </div>
+    <div class="counter-cell reveal">
+      <div class="counter-num"><span class="cnt" data-t="65" data-d="0">0</span></div>
+      <div class="counter-label">מקורות דאטה</div>
+    </div>
+    <div class="counter-cell reveal">
+      <div class="counter-num"><span class="cnt" data-t="258" data-d="0">0</span></div>
+      <div class="counter-label">סיגנלים מנוטרים</div>
+    </div>
+    <div class="counter-cell reveal">
+      <div class="counter-num"><span class="cnt" data-t="5384" data-d="0">0</span></div>
+      <div class="counter-label">פרופילים וראשי רשויות מנוטרים</div>
+    </div>
+    <div class="counter-cell reveal">
+      <div class="counter-num"><span class="cnt" data-t="528" data-d="0">0</span><span class="suffix">K+</span></div>
+      <div class="counter-label">עסקאות נדל"ן מנותחות</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="light-section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="reveal">
+        <span class="eyebrow">About Mark Intelligence</span>
+        <h2 class="title">פלטפורמה אינטגרטיבית<br>למדידה, ניתוח והערכה</h2>
+        <p class="sub">
+          Mark Intelligence מתמחה ביצירת שכבות Intelligence מעל מאגרי מידע ציבוריים, מקצועיים וארגוניים. במקום דוחות עמוסים או גרפים גולמיים, המודלים שלנו מייצרים זיקוק אנליטי שמציג את תמונת המצב המדויקת בשטח.
+        </p>
+      </div>
+      <div class="dvi reveal">
+        <div class="dvi-item"><div class="dvi-badge">D</div><div><strong>Data</strong><p>משקף את העבר וההווה. נתונים גולמיים, מבוזרים, חסרי הקשר מובנה.</p></div></div>
+        <div class="dvi-item"><div class="dvi-badge">I</div><div><strong>Intelligence</strong><p>מפענח מגמות, מגדיר סיבתיות ומתווה את הצעד האסטרטגי הבא.</p></div></div>
+        <div class="dvi-item"><div class="dvi-badge">→</div><div><strong>Decision</strong><p>ודאות אופרטיבית. פעולה מהירה ובטוחה לדרג הניהולי.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section class="light-section" id="methodology" style="background:#f0eee9;">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="eyebrow">Core Methodology</span>
+      <h2 class="title">ארכיטקטורת המידע</h2>
+      <p class="sub">מודל אנליטי קשיח ורב שכבתי. מנתונים גולמיים לודאות אופרטיבית, בארבעה שלבים.</p>
+    </div>
+    <div class="meth-flow reveal">
+      <div class="meth-card active" onclick="setStep(this,0)"><div class="meth-num">PHASE 01</div><div class="meth-phase">DATA</div><h3>תשתית הנתונים</h3><p>מיפוי, אגרגציה ואיחוד מאגרי מידע נרחבים ומבוזרים.</p></div>
+      <div class="meth-card" onclick="setStep(this,1)"><div class="meth-num">PHASE 02</div><div class="meth-phase">ANALYSIS</div><h3>עיבוד סטטיסטי</h3><p>מודלים מתמטיים לניקוי רעשים ואימות רב מקורי.</p></div>
+      <div class="meth-card" onclick="setStep(this,2)"><div class="meth-num">PHASE 03</div><div class="meth-phase">INTELLIGENCE</div><h3>זיקוק מודלים</h3><p>מדדים משוקללים, בנצ'מרק ניטרלי וחשיפת סיבתיות.</p></div>
+      <div class="meth-card" onclick="setStep(this,3)"><div class="meth-num">PHASE 04</div><div class="meth-phase">DECISION</div><h3>ארכיטקטורת בחירה</h3><p>הנגשת תובנות לפעולה מהירה ובטוחה.</p></div>
+    </div>
+    <div class="meth-detail open" id="methDetail">
+      <div class="meth-detail-inner"><ul id="methList">
+        <li>מקורות מידע מוסמכים בלבד. דאטה רשמי, ציבורי וארגוני</li>
+        <li>Data Pipelines אוטומטיים. קצירה רציפה בזמן אמת</li>
+        <li>כיסוי מלא של ורטיקל השוק למניעת הטיות סטטיסטיות</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<div id="platforms"></div>
+
+<!-- 1. MuniMark -->
+<section class="platform" id="p-muni">
+  <div class="plat-inner">
+    <div class="reveal">
+      <div class="plat-logo"><span style="color:var(--c-muni);font-weight:400;">Muni</span><span style="color:var(--c-muni);font-weight:700;">Mark</span></div>
+      <span class="plat-tagline">257 רשויות. מדד אחד.</span>
+      <p class="plat-desc">
+        מערכת הדירוג והארכיון של ראשי הרשויות המקומיות בישראל. האתר הראשון שמרכז את כל המידע, המדדים והנתונים לפרופיל אחד לכל ראש רשות, בעבר ובהווה. ציון ביצועים אובייקטיבי ביחס לקבוצת ההשוואה: אשכול חברתי כלכלי, גודל אוכלוסייה וסוג רשות. פרופיל שנשאר פתוח לציבור לתמיד, כמורשת דיגיטלית בזמן אמת.
+      </p>
+      <div class="plat-counters">
+        <div class="pc"><div class="pc-num"><span class="cnt" data-t="257" data-d="0">0</span></div><div class="pc-label">רשויות מקומיות</div></div>
+        <div class="pc"><div class="pc-num"><span class="cnt" data-t="766" data-d="0">0</span></div><div class="pc-label">כהונות נמדדות</div></div>
+        <div class="pc"><div class="pc-num"><span class="cnt" data-t="39" data-d="0">0</span></div><div class="pc-label">מדדים לכל פרופיל</div></div>
+      </div>
+      <div class="plat-benefit">מדדים. השוואה. אמון. ממשק ציבורי פתוח · מנוי פרמיום לרשות · ארכיון Legacy לתמיד</div>
+    </div>
+    <div class="plat-chart reveal">
+      <div class="plat-chart-title">Key Scores · מדדי מפתח לדוגמה</div>
+      <canvas id="chartMuniDials" class="pchart" height="150"></canvas>
+      <div class="plat-chart-title" style="margin-top:22px;">Trend 2019–2024 · מגמה רב שנתית</div>
+      <canvas id="chartMuniTrend" class="pchart" height="150"></canvas>
+    </div>
+  </div>
+</section>
+
+<div class="wave-div"><canvas></canvas></div>
+
+<!-- 2. ReMark -->
+<section class="platform alt" id="p-remark">
+  <div class="plat-inner">
+    <div class="reveal">
+      <div class="plat-logo"><span style="color:var(--ink);font-weight:400;">Re</span><span style="color:var(--c-remark);font-weight:700;">Mark</span></div>
+      <span class="plat-tagline">אינטליגנציית נדל"ן עירונית</span>
+      <p class="plat-desc">
+        מערכת שהופכת נתוני נדל"ן ממשלתיים גולמיים ומפוזרים לתמונת מודיעין עירונית אחת: מה באמת קורה בשוק של כל עיר. לחץ, מלאי, מחירים וכוח מיקוח, במספרים שאף גורם רשמי לא מפרסם. מבוסס בלעדית על רשות המסים, הלמ"ס, בנק ישראל והכלכלן הראשי. בלי הערכות שמאים ובלי מחירי מבוקש. רק עסקאות שקרו באמת.
+      </p>
+      <div class="plat-counters">
+        <div class="pc"><div class="pc-num"><span class="cnt" data-t="528" data-d="0">0</span>K</div><div class="pc-label">עסקאות אמת מנותחות</div></div>
+        <div class="pc"><div class="pc-num"><span class="cnt" data-t="6" data-d="0">0</span></div><div class="pc-label">מדדים מחושבים לעיר</div></div>
+        <div class="pc"><div class="pc-num"><span class="cnt" data-t="8" data-d="0">0</span></div><div class="pc-label">ערים בכיסוי מלא</div></div>
+      </div>
+      <div class="plat-benefit">זמן מדף · מגמת היצע · מדיאן עירוני · פער תכנוני · כוח קנייה · מלאי צללים</div>
+    </div>
+    <div class="plat-chart reveal">
+      <div class="plat-chart-title">City File · תיק עיר לדוגמה: אשדוד · מרץ 2026</div>
+      <canvas id="chartRemark" class="pchart" height="310"></canvas>
+    </div>
+  </div>
+</section>
+
+<div class="wave-div"><canvas></canvas></div>
+
+<!-- 3. CovenantMark -->
+<section class="platform" id="p-covenant">
+  <div class="plat-inner">
+    <div class="reveal">
+      <div class="plat-logo"><span style="color:var(--ink);font-weight:400;">Covenant</span><span style="color:var(--c-covenant);font-weight:700;">Mark</span></div>
+      <span class="plat-tagline">Intelligence for Compliance & Trust</span>
+      <p class="plat-desc">
+        שכבת מדידה ואמון להתחייבויות, רגולציה ועמידה ביעדים. המערכת עוקבת אחר קיום התחייבויות ציבוריות ועסקיות, ומתרגמת אותן לציון אמון שקוף וניתן להשוואה.
+      </p>
+      <div class="plat-counters">
+        <div class="pc"><div class="pc-num" style="font-size:17px;line-height:1.3;direction:rtl;">ניטור רציף</div><div class="pc-label">מעקב אוטומטי אחר כל התחייבות</div></div>
+        <div class="pc"><div class="pc-num" style="font-size:17px;line-height:1.3;direction:rtl;">ציון אמון</div><div class="pc-label">סקאלת 0–100 שקופה וניתנת להשוואה</div></div>
+        <div class="pc"><div class="pc-num" style="font-size:17px;line-height:1.3;direction:rtl;">התראות חכמות</div><div class="pc-label">זיהוי סטייה מהיעד בזמן אמת</div></div>
+      </div>
+      <div class="plat-benefit">מדד אמון אובייקטיבי, מבוסס עובדות. הופך הבטחות לנתונים מדידים</div>
+    </div>
+    <div class="plat-chart reveal">
+      <div class="plat-chart-title">Trust Score · התפלגות עמידה</div>
+      <canvas id="chartCovenant" class="pchart" height="300"></canvas>
+    </div>
+  </div>
+</section>
+
+<div class="wave-div"><canvas></canvas></div>
+
+<!-- 5. TubeMark -->
+<section class="platform alt" id="p-tube">
+  <div class="plat-inner">
+    <div class="reveal">
+      <div class="plat-logo"><span style="color:var(--ink);font-weight:400;">Tube</span><span style="color:var(--c-tube);font-weight:700;">Mark</span></div>
+      <span class="plat-tagline">המדד היומי של יוטיוב ישראל</span>
+      <p class="plat-desc">
+        שכבת Intelligence אובייקטיבית ובלתי תלויה לשוק התוכן הדיגיטלי: ניתוח ערוצים, קהלים ומגמות צמיחה, עם מדד TubeMark יומי לכל ערוץ.
+      </p>
+      <div class="plat-counters">
+        <div class="pc"><div class="pc-num"><span class="cnt" data-t="31.3" data-d="1">0</span>M+</div><div class="pc-label">צפיות יומיות</div></div>
+        <div class="pc"><div class="pc-num"><span class="cnt" data-t="96" data-d="0">0</span>K+</div><div class="pc-label">מעורבות יומית</div></div>
+        <div class="pc"><div class="pc-num"><span class="cnt" data-t="17" data-d="0">0</span>K+</div><div class="pc-label">מנויים חדשים ביום</div></div>
+      </div>
+      <div class="plat-benefit">אופטימיזציה של תקציבי שיווק, מניעת השקעות סרק וזיהוי מוקדם של פוטנציאל צמיחה</div>
+    </div>
+    <div class="plat-chart reveal">
+      <div class="plat-chart-title">Daily Views · צפיות יומיות שבוע אחרון</div>
+      <canvas id="chartTube" class="pchart" height="300"></canvas>
+    </div>
+  </div>
+</section>
+
+<div class="wave-div"><canvas></canvas></div>
+
+<!-- 6. InfluenceMark -->
+<section class="platform" id="p-influence">
+  <div class="plat-inner">
+    <div class="reveal">
+      <div class="plat-logo"><span style="color:var(--ink);font-weight:400;">Influence</span><span style="background:linear-gradient(90deg,var(--c-influence),var(--c-influence2));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700;">Mark</span></div>
+      <span class="plat-tagline">המדד היומי של אינסטגרם וטיקטוק ישראל</span>
+      <p class="plat-desc">
+        מדידה אובייקטיבית של השפעה חברתית אמיתית באינסטגרם ובטיקטוק: עוקבים, מעורבות וצמיחה, מעבר למספרים השטחיים.
+      </p>
+      <div class="plat-counters">
+        <div class="pc"><div class="pc-num"><span class="cnt" data-t="48" data-d="0">0</span>K+</div><div class="pc-label">עוקבים חדשים ביום</div></div>
+        <div class="pc"><div class="pc-num"><span class="cnt" data-t="41" data-d="0">0</span>K+</div><div class="pc-label">מעורבות יומית</div></div>
+        <div class="pc"><div class="pc-num"><span class="cnt" data-t="16" data-d="0">0</span>K+</div><div class="pc-label">מוביל עוקבים יומי</div></div>
+      </div>
+      <div class="plat-benefit">זיהוי משפיענים אותנטיים והשוואת ביצועים חוצת פלטפורמות</div>
+    </div>
+    <div class="plat-chart reveal">
+      <div class="plat-chart-title">Influence Momentum · מומנטום השפעה</div>
+      <canvas id="chartInfluence" class="pchart" height="300"></canvas>
+    </div>
+  </div>
+</section>
+
+<div class="wave-div"><canvas></canvas></div>
+
+<!-- 7. SignalMark -->
+<section class="platform alt" id="p-signal">
+  <div class="plat-inner">
+    <div class="reveal">
+      <div class="plat-logo"><span style="color:var(--c-signal);font-weight:400;">Signal</span><span style="color:var(--ink);font-weight:700;">Mark</span></div>
+      <span class="plat-tagline">Intelligence for LinkedIn Presence</span>
+      <p class="plat-desc">
+        ניתוח עומק של נוכחות ובהירות מסר בלינקדאין. המערכת מודדת עקביות מסרים, צפיפות ראיות, מיקוד נושאי וייחודיות לשונית על פני הפרופיל, האודות והפוסטים, ומזקקת ציון Signal אחד לכל נוכחות מקצועית.
+      </p>
+      <div class="plat-counters">
+        <div class="pc"><div class="pc-num"><span class="cnt" data-t="71" data-d="0">0</span></div><div class="pc-label">Signal Score לדוגמה</div></div>
+        <div class="pc"><div class="pc-num"><span class="cnt" data-t="5" data-d="0">0</span></div><div class="pc-label">ממדי מדידה</div></div>
+        <div class="pc"><div class="pc-num"><span class="cnt" data-t="99" data-d="0">0</span></div><div class="pc-label">ייחודיות לשונית שיא</div></div>
+      </div>
+      <div class="plat-benefit">Message Consistency · Evidence Density · Topical Focus · Lexical Distinctiveness · Redundancy Control</div>
+    </div>
+    <div class="plat-chart reveal">
+      <div class="plat-chart-title">Signal Distribution · התפלגות הסיגנל</div>
+      <canvas id="chartSignal" class="pchart" height="300"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing" id="vision">
+  <div class="closing-inner reveal">
+    <span class="eyebrow" style="color:var(--gray-l);">The Vision</span>
+    <h2>היתרון היחסי</h2>
+    <p>
+      בעידן של עודף נתונים, היתרון התחרותי אינו שייך למי שמחזיק בכמות המידע הגדולה ביותר, אלא למי שניחן ביכולת לזהות את הסיגנל מתוך הרעש, להפריד בין נרטיב לעובדות, ולתרגם מורכבות לבהירות אופרטיבית. זהו בדיוק המרחב שבו Mark Intelligence פועלת.
+    </p>
+    <div class="big-tagline"><em>Mark</em> Intelligence</div>
+    <div class="big-sub">From Data to Decisions</div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 MARK INTELLIGENCE GROUP · ראש פינה ת.ד. 1568 · main@markintellegence.co.il</p>
+  <p style="direction:ltr;">MuniMark · ReMark · CovenantMark · TubeMark · InfluenceMark · SignalMark</p>
+</footer>
+
+<!-- CONTACT MODAL -->
+<div class="modal-overlay" id="contactModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeContact()">✕</button>
+    <div class="modal-logo" style="direction:ltr;font-family:var(--lat);"><span style="color:var(--red);font-weight:700;">Mark</span><span style="font-weight:500;"> Intelligence</span></div>
+    <h3 class="modal-title">צור קשר</h3>
+    <div class="modal-info">
+      <div>משרדים: ראש פינה ת.ד. 1568</div>
+      <div style="direction:ltr;">main@markintellegence.co.il</div>
+    </div>
+    <div class="modal-form">
+      <input type="text" id="cf-name" placeholder="שם מלא">
+      <input type="email" id="cf-email" placeholder="אימייל">
+      <input type="tel" id="cf-phone" placeholder="טלפון">
+      <textarea id="cf-msg" rows="4" placeholder="במה נוכל לעזור?"></textarea>
+      <button class="modal-send" onclick="sendContact()">שליחה</button>
+      <div class="modal-sent" id="cfSent">תודה! ההודעה נשלחה. נחזור אליך בהקדם.</div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+/* ═══ HERO PARTICLES: wave / scatter / converge ═══ */
+const cv = document.getElementById('particles');
+const px = cv.getContext('2d');
+let PW, PH, parts = [];
+const MODES = ['wave','scatter','converge'];
+let modeIdx = 0, modeT = 0;
+const MODE_DUR = 420;
+function pInit() {
+  PW = cv.width = innerWidth; PH = cv.height = innerHeight;
+  const n = Math.min(300, Math.floor(PW*PH/7000));
+  parts = [];
+  for (let i=0;i<n;i++) parts.push({
+    x: Math.random()*PW, y: Math.random()*PH, tx:0, ty:0,
+    r: 1 + Math.random()*2.2, red: Math.random()>0.85,
+    seed: Math.random()*Math.PI*2, spd: .5+Math.random()*.8
+  });
+}
+function setTargets(mode, t) {
+  const n = parts.length;
+  parts.forEach((p,i) => {
+    if (mode==='wave') {
+      const fx = (i/n)*PW;
+      p.tx = fx;
+      p.ty = PH*.5 + Math.sin(fx*.008 + t*.03 + p.seed*.4)*(PH*.16) + Math.sin(fx*.02 - t*.02)*(PH*.05);
+    } else if (mode==='scatter') {
+      p.tx = p.x + Math.cos(t*.01+p.seed)*2.2;
+      p.ty = p.y + Math.sin(t*.013+p.seed*1.7)*2.2;
+      if (p.tx<0) p.tx+=PW; if (p.tx>PW) p.tx-=PW;
+      if (p.ty<0) p.ty+=PH; if (p.ty>PH) p.ty-=PH;
+    } else {
+      const a = (i/n)*Math.PI*2 + t*.004;
+      const R = Math.min(PW,PH)*.3 + Math.sin(t*.02+p.seed)*8;
+      p.tx = PW/2 + Math.cos(a)*R; p.ty = PH/2 + Math.sin(a)*R;
+    }
+  });
+}
+let frame = 0;
+function pLoop() {
+  frame++; modeT++;
+  if (modeT > MODE_DUR) { modeT = 0; modeIdx = (modeIdx+1)%MODES.length; }
+  const mode = MODES[modeIdx];
+  setTargets(mode, frame);
+  px.clearRect(0,0,PW,PH);
+  const lerp = mode==='scatter' ? .05 : .035;
+  parts.forEach(p => {
+    p.x += (p.tx-p.x)*lerp*p.spd;
+    p.y += (p.ty-p.y)*lerp*p.spd;
+    px.beginPath(); px.arc(p.x,p.y,p.r,0,Math.PI*2);
+    px.fillStyle = p.red ? 'rgba(204,16,16,0.7)' : 'rgba(200,200,200,0.4)';
+    px.fill();
+  });
+  requestAnimationFrame(pLoop);
+}
+addEventListener('resize', pInit);
+pInit(); pLoop();
+
+/* ═══ WAVE DIVIDERS — gentle continuous dot wave ═══ */
+const divs = [...document.querySelectorAll('.wave-div canvas')];
+let wFrame = 0;
+function fitDivs() {
+  divs.forEach(c => { c.width = c.parentElement.clientWidth; c.height = c.parentElement.clientHeight; });
+}
+function wavesLoop() {
+  wFrame += 0.6;
+  divs.forEach((c, di) => {
+    const g = c.getContext('2d');
+    const W = c.width, H = c.height;
+    g.clearRect(0,0,W,H);
+    const N = Math.floor(W/16);
+    for (let i=0;i<N;i++){
+      const x = (i/N)*W + 8;
+      const y = H/2 + Math.sin(x*.012 + wFrame*.05 + di*1.4)*(H*.26)
+                     + Math.sin(x*.03 - wFrame*.03)*(H*.1);
+      const r = 1.4 + Math.sin(i*.7 + wFrame*.04)*0.7;
+      g.beginPath(); g.arc(x,y,Math.abs(r)+0.6,0,Math.PI*2);
+      g.fillStyle = 'rgba(23,23,23,' + (0.18 + 0.1*Math.sin(i+wFrame*.05)) + ')';
+      g.fill();
+    }
+  });
+  requestAnimationFrame(wavesLoop);
+}
+addEventListener('resize', fitDivs);
+fitDivs(); wavesLoop();
+
+/* ═══ REVEAL ═══ */
+const obs = new IntersectionObserver(es => {
+  es.forEach((e,i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('vis'), i*80); });
+}, { threshold: .08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* ═══ COUNTERS ═══ */
+function runCnt(el) {
+  const t = parseFloat(el.dataset.t), d = parseInt(el.dataset.d);
+  let s = null;
+  function step(ts) {
+    if (!s) s = ts;
+    const p = Math.min((ts-s)/1600, 1);
+    const e = 1 - Math.pow(1-p, 3);
+    const v = t*e;
+    el.textContent = d>0 ? v.toFixed(d) : Math.floor(v).toLocaleString();
+    if (p<1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+const cntObs = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.querySelectorAll('.cnt').forEach(runCnt); cntObs.unobserve(e.target); } });
+}, { threshold: .3 });
+document.querySelectorAll('#countersStrip, .platform').forEach(s => cntObs.observe(s));
+
+/* ═══ METHODOLOGY ═══ */
+const methSteps = [
+  ['מקורות מידע מוסמכים בלבד. דאטה רשמי, ציבורי וארגוני','Data Pipelines אוטומטיים. קצירה רציפה בזמן אמת','כיסוי מלא של ורטיקל השוק למניעת הטיות סטטיסטיות'],
+  ['Data Cleansing. סינון רשומות כפולות וזיהוי חריגים','Cross Referencing. אימות ממקורות בלתי תלויים','Trend & Correlation Analysis. דפוסים ומגמות ארוכות טווח'],
+  ['Proprietary Scoring. מאות משתנים למדד סינתטי אחד','Comparative Benchmarking. שפת השוואה ניטרלית','Causality Mapping. ממה קרה אל למה זה קרה'],
+  ['Complexity Reduction. שורה תחתונה חדה וקוהרנטית','Decision Support Systems. ממשקים פנורמיים עם Drill Down','אינדיקטורים מקדימים לחיזוי מגמות וניהול סיכונים']
+];
+function setStep(el, i) {
+  document.querySelectorAll('.meth-card').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('methList').innerHTML = methSteps[i].map(t => `<li>${t}</li>`).join('');
+  document.getElementById('methDetail').classList.add('open');
+}
+
+/* ═══ CONTACT MODAL ═══ */
+function openContact() { document.getElementById('contactModal').classList.add('open'); }
+function closeContact() { document.getElementById('contactModal').classList.remove('open'); }
+document.getElementById('contactModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeContact();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeContact(); });
+function sendContact() {
+  const name = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const msg = document.getElementById('cf-msg').value.trim();
+  const body = encodeURIComponent('שם: ' + name + '\nאימייל: ' + email + '\nטלפון: ' + document.getElementById('cf-phone').value.trim() + '\n\n' + msg);
+  window.location.href = 'mailto:main@markintellegence.co.il?subject=' + encodeURIComponent('פנייה מהאתר — ' + name) + '&body=' + body;
+  document.getElementById('cfSent').classList.add('show');
+}
+
+/* ═══ CHART HELPERS ═══ */
+function fitC(c) { c.width = c.parentElement.clientWidth - 52; return c.getContext('2d'); }
+function animate(fn, dur=1500) {
+  let s = null;
+  function fr(ts) { if(!s)s=ts; const p=Math.min((ts-s)/dur,1); fn(1-Math.pow(1-p,3)); if(p<1)requestAnimationFrame(fr); }
+  requestAnimationFrame(fr);
+}
+const INK='#171717', GRAY='#8a8a8a', GRID='rgba(23,23,23,0.08)';
+
+/* MuniMark: animated score dials */
+function drawMuniDials(p) {
+  const c = document.getElementById('chartMuniDials'); const x = fitC(c);
+  const W=c.width,H=c.height; x.clearRect(0,0,W,H);
+  const dials=[{v:87,l:'ציון כללי'},{v:92,l:'שקיפות'},{v:78,l:'חינוך'}];
+  const n=dials.length, R=Math.min(H*.35, W/(n*2.6)), lw=7;
+  dials.forEach((d,i)=>{
+    const cx=W-(W/(n*2))*(i*2+1), cy=H/2-6;
+    x.beginPath(); x.arc(cx,cy,R,0,Math.PI*2);
+    x.strokeStyle='rgba(23,23,23,0.08)'; x.lineWidth=lw; x.stroke();
+    x.beginPath();
+    x.arc(cx,cy,R,-Math.PI/2,-Math.PI/2+(d.v/100)*Math.PI*2*p);
+    x.strokeStyle=INK; x.lineWidth=lw; x.lineCap='round'; x.stroke();
+    x.fillStyle=INK; x.font='700 '+(R*.62)+'px Poppins'; x.textAlign='center';
+    x.fillText(Math.round(d.v*p), cx, cy+R*.22);
+    x.font='12px Assistant'; x.fillStyle=GRAY;
+    x.fillText(d.l, cx, cy+R+22);
+  });
+}
+/* MuniMark: multi-year trend */
+function drawMuniTrend(p) {
+  const c = document.getElementById('chartMuniTrend'); const x = fitC(c);
+  const W=c.width,H=c.height; x.clearRect(0,0,W,H);
+  const pad={l:34,r:14,t:14,b:26}, cW=W-pad.l-pad.r, cH=H-pad.t-pad.b;
+  const yrs=['2019','2020','2021','2022','2023','2024'];
+  const bagrut=[84,85.5,87,88.2,90,91.8];       /* זכאות בגרות */
+  const atzmi=[48,50,52,54,56,57.7];            /* הכנסות עצמיות */
+  const gx=i=>pad.l+(i/5)*cW;
+  x.strokeStyle=GRID;
+  for(let i=0;i<=2;i++){const y=pad.t+cH/2*i;x.beginPath();x.moveTo(pad.l,y);x.lineTo(W-pad.r,y);x.stroke();}
+  x.font='9px IBM Plex Mono'; x.fillStyle=GRAY; x.textAlign='center';
+  yrs.forEach((l,i)=>x.fillText(l,gx(i),H-8));
+  const k=Math.max(2,Math.ceil(6*p));
+  function line(d,min,max,col,w,dash){
+    const gy=v=>pad.t+cH-((v-min)/(max-min))*cH;
+    if(dash)x.setLineDash([4,3]);
+    x.beginPath();
+    for(let i=0;i<k;i++){i===0?x.moveTo(gx(i),gy(d[i])):x.lineTo(gx(i),gy(d[i]));}
+    x.strokeStyle=col;x.lineWidth=w;x.lineJoin='round';x.stroke();x.setLineDash([]);
+    x.beginPath();x.arc(gx(k-1),gy(d[k-1]),3.5,0,Math.PI*2);x.fillStyle=col;x.fill();
+  }
+  line(bagrut,80,95,INK,2.5,false);
+  line(atzmi,44,62,GRAY,1.8,true);
+  if(p>0.9){
+    x.textAlign='left';x.font='10px Assistant';
+    x.fillStyle=INK;x.fillText('זכאות בגרות 91.8%',pad.l+2,pad.t+8);
+    x.fillStyle=GRAY;x.fillText('הכנסות עצמיות 57.7%',pad.l+2,pad.t+22);
+  }
+}
+
+/* ReMark: city file — stability dial + metric bars */
+function drawRemark(p) {
+  const c = document.getElementById('chartRemark'); const x = fitC(c);
+  const W=c.width,H=c.height; x.clearRect(0,0,W,H);
+  /* dial: ציון יציבות 58 */
+  const cx=W-70, cy=68, R=46, lw=8;
+  x.beginPath();x.arc(cx,cy,R,0,Math.PI*2);x.strokeStyle='rgba(23,23,23,0.08)';x.lineWidth=lw;x.stroke();
+  x.beginPath();x.arc(cx,cy,R,-Math.PI/2,-Math.PI/2+(58/100)*Math.PI*2*p);
+  x.strokeStyle=INK;x.lineWidth=lw;x.lineCap='round';x.stroke();
+  x.fillStyle=INK;x.font='700 30px Poppins';x.textAlign='center';
+  x.fillText(Math.round(58*p),cx,cy+9);
+  x.font='11px Assistant';x.fillStyle=GRAY;x.fillText('ציון יציבות',cx,cy+R+20);
+  /* headline number */
+  x.textAlign='right';
+  x.fillStyle=INK;x.font='700 40px Poppins';
+  x.fillText((30.6*p).toFixed(1), W-160, 62);
+  x.font='12px Assistant';x.fillStyle=GRAY;
+  x.fillText('חודשי ספיגה · זמן מדף', W-160, 84);
+  /* bars */
+  const bars=[
+    {l:'מגמת היצע',v:35,note:'בנייה מכסה 200% מהביקוש'},
+    {l:'בריאות שוק חופשי',v:55,note:'28% נשענות על מימון קבלן'},
+    {l:'פער תכנוני',v:46,note:'46% ביקוש לדירות קטנות, 23.5% בבנייה'}
+  ];
+  const bx=24, bw=W-48, y0=150, gap=52;
+  bars.forEach((b,i)=>{
+    const y=y0+i*gap;
+    x.textAlign='right';x.fillStyle=INK;x.font='600 13px Assistant';
+    x.fillText(b.l, W-24, y);
+    x.textAlign='left';x.fillStyle=INK;x.font='700 13px Poppins';
+    x.fillText(Math.round(b.v*p)+'/100', bx, y);
+    x.fillStyle='rgba(23,23,23,0.08)';
+    x.fillRect(bx, y+8, bw, 5);
+    x.fillStyle=INK;
+    x.fillRect(bx+bw-(bw*(b.v/100)*p), y+8, bw*(b.v/100)*p, 5);
+    x.textAlign='right';x.fillStyle=GRAY;x.font='11px Assistant';
+    x.fillText(b.note, W-24, y+28);
+  });
+}
+
+/* Covenant: donut (mono) */
+function drawCovenant(p) {
+  const c = document.getElementById('chartCovenant'); const x = fitC(c);
+  const W=c.width,H=c.height; x.clearRect(0,0,W,H);
+  const cx=W/2, cy=H/2, R=Math.min(W,H)*.32, lw=24;
+  const segs=[{v:.93,col:INK,label:'עמידה מלאה'},{v:.05,col:'#9a9a9a',label:'חלקית'},{v:.02,col:'#d5d2cb',label:'אי עמידה'}];
+  let a=-Math.PI/2;
+  segs.forEach(s=>{
+    const sw=s.v*Math.PI*2*p;
+    x.beginPath();x.arc(cx,cy,R,a,a+sw);
+    x.strokeStyle=s.col;x.lineWidth=lw;x.stroke();
+    a+=sw;
+  });
+  x.fillStyle=INK;x.font='700 42px Poppins';x.textAlign='center';
+  x.fillText(Math.round(93*p)+'%',cx,cy+8);
+  x.font='12px Assistant';x.fillStyle=GRAY;x.fillText('עמידה בהתחייבויות',cx,cy+32);
+  x.font='11px Assistant';x.textAlign='right';
+  segs.forEach((s,i)=>{
+    const ly=H-56+i*17;
+    x.fillStyle=s.col;x.fillRect(W-14,ly-8,10,10);
+    x.fillStyle=GRAY;x.fillText(s.label,W-20,ly+1);
+  });
+}
+
+/* Tube: daily bars (mono) */
+function drawTube(p) {
+  const c = document.getElementById('chartTube'); const x = fitC(c);
+  const W=c.width,H=c.height; x.clearRect(0,0,W,H);
+  const pad={l:40,r:16,t:20,b:32}, cW=W-pad.l-pad.r, cH=H-pad.t-pad.b;
+  const days=['א','ב','ג','ד','ה','ו','ש'];
+  const views=[24,27,26,31,29,33,31.3];
+  const bw=cW/days.length*.55;
+  x.strokeStyle=GRID;
+  for(let i=0;i<=3;i++){const y=pad.t+cH/3*i;x.beginPath();x.moveTo(pad.l,y);x.lineTo(W-pad.r,y);x.stroke();}
+  x.font='11px Assistant';x.fillStyle=GRAY;x.textAlign='center';
+  days.forEach((d,i)=>{
+    const bx=pad.l+(i+.5)/days.length*cW;
+    x.fillText(d,bx,H-10);
+    const h=(views[i]/35)*cH*p;
+    x.fillStyle = i===days.length-1 ? INK : 'rgba(23,23,23,0.55)';
+    x.fillRect(bx-bw/2,pad.t+cH-h,bw,h);
+  });
+  if(p>0.9){
+    x.fillStyle=INK;x.font='700 12px Poppins';x.textAlign='center';
+    x.fillText('31.3M',pad.l+6.5/7*cW,pad.t+cH-(31.3/35)*cH-8);
+  }
+  x.fillStyle=GRAY;x.font='9px IBM Plex Mono';x.textAlign='left';
+  x.fillText('DAILY VIEWS (M)',pad.l,12);
+}
+
+/* Influence: momentum line (mono) */
+function drawInfluence(p) {
+  const c = document.getElementById('chartInfluence'); const x = fitC(c);
+  const W=c.width,H=c.height; x.clearRect(0,0,W,H);
+  const pad={l:36,r:16,t:20,b:30}, cW=W-pad.l-pad.r, cH=H-pad.t-pad.b;
+  const data=[12,18,15,26,32,28,41,48], n=data.length;
+  const gx=i=>pad.l+(i/(n-1))*cW, gy=v=>pad.t+cH-(v/52)*cH;
+  x.strokeStyle=GRID;
+  for(let i=0;i<=3;i++){const y=pad.t+cH/3*i;x.beginPath();x.moveTo(pad.l,y);x.lineTo(W-pad.r,y);x.stroke();}
+  const k=Math.max(2,Math.ceil(n*p));
+  x.beginPath();
+  for(let i=0;i<k;i++){i===0?x.moveTo(gx(i),gy(data[i])):x.lineTo(gx(i),gy(data[i]));}
+  x.lineTo(gx(k-1),pad.t+cH);x.lineTo(pad.l,pad.t+cH);x.closePath();
+  x.fillStyle='rgba(23,23,23,0.06)';x.fill();
+  x.beginPath();
+  for(let i=0;i<k;i++){i===0?x.moveTo(gx(i),gy(data[i])):x.lineTo(gx(i),gy(data[i]));}
+  x.strokeStyle=INK;x.lineWidth=2.5;x.lineJoin='round';x.lineCap='round';x.stroke();
+  const li=k-1;
+  x.beginPath();x.arc(gx(li),gy(data[li]),5,0,Math.PI*2);x.fillStyle=INK;x.fill();
+  if(p>0.9){x.fillStyle=INK;x.font='700 12px Poppins';x.textAlign='right';x.fillText('48K+',gx(li)-10,gy(data[li])-10);}
+  x.fillStyle=GRAY;x.font='9px IBM Plex Mono';x.textAlign='left';
+  x.fillText('DAILY NEW FOLLOWERS (K)',pad.l,12);
+}
+
+/* Signal: radar (mono) */
+function drawSignal(p) {
+  const c = document.getElementById('chartSignal'); const x = fitC(c);
+  const W=c.width,H=c.height; x.clearRect(0,0,W,H);
+  const cx=W/2, cy=H/2+6, R=Math.min(W,H)*.33;
+  const labels=['Consistency','Evidence','Focus','Lexical','Redundancy'];
+  const vals=[.61,.95,.42,.99,.55], n=5;
+  const ang=i=>-Math.PI/2+(i/n)*Math.PI*2;
+  [0.25,.5,.75,1].forEach(s=>{
+    x.beginPath();
+    for(let i=0;i<n;i++){const a=ang(i);const qx=cx+Math.cos(a)*R*s,qy=cy+Math.sin(a)*R*s;i===0?x.moveTo(qx,qy):x.lineTo(qx,qy);}
+    x.closePath();x.strokeStyle='rgba(23,23,23,0.1)';x.stroke();
+  });
+  for(let i=0;i<n;i++){const a=ang(i);x.beginPath();x.moveTo(cx,cy);x.lineTo(cx+Math.cos(a)*R,cy+Math.sin(a)*R);x.strokeStyle='rgba(23,23,23,0.07)';x.stroke();}
+  x.font='10px IBM Plex Mono';x.fillStyle=GRAY;
+  for(let i=0;i<n;i++){
+    const a=ang(i);const qx=cx+Math.cos(a)*R*1.24, qy=cy+Math.sin(a)*R*1.24;
+    x.textAlign=qx<cx-5?'right':qx>cx+5?'left':'center';
+    x.fillText(labels[i],qx,qy+3);
+  }
+  x.beginPath();
+  for(let i=0;i<n;i++){const a=ang(i);const qx=cx+Math.cos(a)*R*vals[i]*p,qy=cy+Math.sin(a)*R*vals[i]*p;i===0?x.moveTo(qx,qy):x.lineTo(qx,qy);}
+  x.closePath();
+  x.fillStyle='rgba(23,23,23,0.07)';x.fill();
+  x.strokeStyle=INK;x.lineWidth=2;x.stroke();
+  for(let i=0;i<n;i++){
+    const a=ang(i);const qx=cx+Math.cos(a)*R*vals[i]*p,qy=cy+Math.sin(a)*R*vals[i]*p;
+    x.beginPath();x.arc(qx,qy,3.5,0,Math.PI*2);x.fillStyle=INK;x.fill();
+  }
+}
+
+/* triggers */
+const chartMap = [
+  ['p-muni', () => { animate(drawMuniDials,1500); animate(drawMuniTrend,1800); }],
+  ['p-remark', () => animate(drawRemark,1700)],
+  ['p-covenant', () => animate(drawCovenant,1600)],
+  ['p-tube', () => animate(drawTube,1400)],
+  ['p-influence', () => animate(drawInfluence,1700)],
+  ['p-signal', () => animate(drawSignal,1500)],
+];
+chartMap.forEach(([id, fn]) => {
+  const el = document.getElementById(id);
+  const o = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { fn(); o.disconnect(); } });
+  }, { threshold: .25 });
+  o.observe(el);
+});
+addEventListener('resize', () => {
+  drawMuniDials(1); drawMuniTrend(1); drawRemark(1); drawCovenant(1); drawTube(1); drawInfluence(1); drawSignal(1);
+});
+</script>
+</body>
+</html>

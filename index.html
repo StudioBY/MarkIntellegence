@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mark Intelligence | From Data to Decisions</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --dark: #141414;
@@ -20,7 +20,7 @@
   --line-l: #e2dfd8;
   --red: #cc1010;
   --mono: 'IBM Plex Mono', monospace;
-  --heb: 'Assistant', sans-serif;
+  --heb: 'Heebo', sans-serif;
   --lat: 'Poppins', sans-serif;
 
   --c-muni: #1e2a4a;
@@ -147,6 +147,7 @@ h2.title { font-size: clamp(30px,4.5vw,46px); font-weight: 700; line-height: 1.1
 .plat-benefit { font-size: 13.5px; color: var(--gray); border-right: 3px solid var(--ink); padding: 3px 15px 3px 0; line-height: 1.7; }
 .plat-chart { background: #fff; border: 1px solid var(--line-l); padding: 26px; box-shadow: 0 18px 44px rgba(0,0,0,.05); }
 .plat-chart-title { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; color: var(--gray-l); text-transform: uppercase; margin-bottom: 16px; }
+.plat-chart-cap { font-size: 11.5px; color: var(--gray); line-height: 1.6; margin-top: 14px; }
 canvas.pchart { width: 100%; display: block; }
 
 /* CLOSING */
@@ -407,20 +408,21 @@ footer p { font-family: var(--mono); font-size: 11px; color: var(--gray); letter
   <div class="plat-inner">
     <div class="reveal">
       <div class="plat-logo"><span style="color:var(--ink);font-weight:400;">Covenant</span><span style="color:var(--c-covenant);font-weight:700;">Mark</span></div>
-      <span class="plat-tagline">Intelligence for Compliance & Trust</span>
+      <span class="plat-tagline">אינטליגנציה לשוק החוב</span>
       <p class="plat-desc">
-        שכבת מדידה ואמון להתחייבויות, רגולציה ועמידה ביעדים. המערכת עוקבת אחר קיום התחייבויות ציבוריות ועסקיות, ומתרגמת אותן לציון אמון שקוף וניתן להשוואה.
+        כל אירוע אשראי משאיר עקבות פומביים הרבה לפני שהוא מתרחש: דוחות תקופתיים, דיווחים מיידיים, פעולות דירוג, תנועות בשוק. הבעיה אינה מחסור במידע אלא ההיקף שלו. מאות סדרות, אלפי דיווחים בשנה, ואף גורם אנושי שיכול לעקוב אחרי כולם באופן שיטתי. CovenantMark ממיר את הזרם הזה לתמונה אחת: מה כל חברה התחייבה, מה היא דיווחה בפועל, ומה השתנה מאז הבדיקה הקודמת.
       </p>
       <div class="plat-counters">
-        <div class="pc"><div class="pc-num" style="font-size:17px;line-height:1.3;direction:rtl;">ניטור רציף</div><div class="pc-label">מעקב אוטומטי אחר כל התחייבות</div></div>
-        <div class="pc"><div class="pc-num" style="font-size:17px;line-height:1.3;direction:rtl;">ציון אמון</div><div class="pc-label">סקאלת 0–100 שקופה וניתנת להשוואה</div></div>
-        <div class="pc"><div class="pc-num" style="font-size:17px;line-height:1.3;direction:rtl;">התראות חכמות</div><div class="pc-label">זיהוי סטייה מהיעד בזמן אמת</div></div>
+        <div class="pc"><div class="pc-num" style="font-size:17px;line-height:1.3;direction:rtl;font-family:var(--heb);">מהמסמך ועד המסך</div><div class="pc-label">ההתחייבות מהמקור המשפטי, מוצלבת מול הדיווח בפועל</div></div>
+        <div class="pc"><div class="pc-num" style="font-size:17px;line-height:1.3;direction:rtl;font-family:var(--heb);">מקור לכל נתון</div><div class="pc-label">ציטוט ומיקום מדויק, עם דרגת אימות גלויה</div></div>
+        <div class="pc"><div class="pc-num" style="font-size:17px;line-height:1.3;direction:rtl;font-family:var(--heb);">ממשק חי</div><div class="pc-label">מתעדכן עם כל דוח וכל תנועת שוק</div></div>
       </div>
-      <div class="plat-benefit">מדד אמון אובייקטיבי, מבוסס עובדות. הופך הבטחות לנתונים מדידים</div>
+      <div class="plat-benefit">התחייבות מול ביצוע בפועל · דרגת אימות לכל נתון · עדכון רציף · קישור ישיר למקור</div>
     </div>
     <div class="plat-chart reveal">
-      <div class="plat-chart-title">Trust Score · התפלגות עמידה</div>
+      <div class="plat-chart-title">Rating Trajectory · מסלול דירוג · סדרה קונצרנית, מקרה אמיתי</div>
       <canvas id="chartCovenant" class="pchart" height="300"></canvas>
+      <p class="plat-chart-cap">כל נקודה על הציר פורסמה פומבית, בזמן אמת. המערכת אינה מנבאת משברים; היא מתעדת את הדרך אליהם, בזמן שעוד אפשר לפעול. הנתונים אמיתיים, שם הסדרה הוסתר בכוונה.</p>
     </div>
   </div>
 </section>
@@ -569,7 +571,11 @@ const MODES = ['wave','scatter','converge'];
 let modeIdx = 0, modeT = 0;
 const MODE_DUR = 420;
 function pInit() {
-  PW = cv.width = innerWidth; PH = cv.height = innerHeight;
+  const dpr = window.devicePixelRatio || 1;
+  PW = innerWidth; PH = innerHeight;
+  cv.width = Math.round(PW*dpr); cv.height = Math.round(PH*dpr);
+  cv.style.width = PW+'px'; cv.style.height = PH+'px';
+  px.setTransform(dpr,0,0,dpr,0,0);
   const n = Math.min(300, Math.floor(PW*PH/7000));
   parts = [];
   for (let i=0;i<n;i++) parts.push({
@@ -621,13 +627,19 @@ pInit(); pLoop();
 const divs = [...document.querySelectorAll('.wave-div canvas')];
 let wFrame = 0;
 function fitDivs() {
-  divs.forEach(c => { c.width = c.parentElement.clientWidth; c.height = c.parentElement.clientHeight; });
+  const dpr = window.devicePixelRatio || 1;
+  divs.forEach(c => {
+    const cw = c.parentElement.clientWidth, ch = c.parentElement.clientHeight;
+    c.style.width = cw+'px'; c.style.height = ch+'px';
+    c.width = Math.round(cw*dpr); c.height = Math.round(ch*dpr);
+    c.getContext('2d').setTransform(dpr,0,0,dpr,0,0);
+  });
 }
 function wavesLoop() {
   wFrame += 0.6;
   divs.forEach((c, di) => {
     const g = c.getContext('2d');
-    const W = c.width, H = c.height;
+    const W = c.clientWidth, H = c.clientHeight;
     g.clearRect(0,0,W,H);
     const N = Math.floor(W/16);
     for (let i=0;i<N;i++){
@@ -701,7 +713,21 @@ function sendContact() {
 }
 
 /* ═══ CHART HELPERS ═══ */
-function fitC(c) { c.width = c.parentElement.clientWidth - 52; return c.getContext('2d'); }
+/* Renders each chart at devicePixelRatio resolution so lines/text stay crisp on retina screens,
+   while all drawing math below keeps using logical (CSS-pixel) width/height via c.clientWidth/clientHeight. */
+function fitC(c) {
+  const dpr = window.devicePixelRatio || 1;
+  if (!c.dataset.cssH) c.dataset.cssH = c.height;
+  const cssW = c.parentElement.clientWidth - 52;
+  const cssH = +c.dataset.cssH;
+  c.style.width = cssW + 'px';
+  c.style.height = cssH + 'px';
+  c.width = Math.round(cssW * dpr);
+  c.height = Math.round(cssH * dpr);
+  const ctx = c.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return ctx;
+}
 function animate(fn, dur=1500) {
   let s = null;
   function fr(ts) { if(!s)s=ts; const p=Math.min((ts-s)/dur,1); fn(1-Math.pow(1-p,3)); if(p<1)requestAnimationFrame(fr); }
@@ -713,7 +739,7 @@ const GDARK='#2a2a2a', GMID='#7a7a7a', GLIGHT='#b8b8b8';
 /* MuniMark: animated score dials */
 function drawMuniDials(p) {
   const c = document.getElementById('chartMuniDials'); const x = fitC(c);
-  const W=c.width,H=c.height; x.clearRect(0,0,W,H);
+  const W=c.clientWidth,H=c.clientHeight; x.clearRect(0,0,W,H);
   const dials=[{v:87,l:'ציון כללי'},{v:92,l:'שקיפות'},{v:78,l:'חינוך'}];
   const n=dials.length, R=Math.min(H*.35, W/(n*2.6)), lw=7;
   dials.forEach((d,i)=>{
@@ -725,14 +751,14 @@ function drawMuniDials(p) {
     x.strokeStyle=INK; x.lineWidth=lw; x.lineCap='round'; x.stroke();
     x.fillStyle=INK; x.font='300 '+(R*.62)+'px Poppins'; x.textAlign='center';
     x.fillText(Math.round(d.v*p), cx, cy+R*.22);
-    x.font='12px Assistant'; x.fillStyle=GRAY;
+    x.font='12px Heebo'; x.fillStyle=GRAY;
     x.fillText(d.l, cx, cy+R+22);
   });
 }
 /* MuniMark: multi-year trend */
 function drawMuniTrend(p) {
   const c = document.getElementById('chartMuniTrend'); const x = fitC(c);
-  const W=c.width,H=c.height; x.clearRect(0,0,W,H);
+  const W=c.clientWidth,H=c.clientHeight; x.clearRect(0,0,W,H);
   const pad={l:34,r:14,t:14,b:26}, cW=W-pad.l-pad.r, cH=H-pad.t-pad.b;
   const yrs=['2019','2020','2021','2022','2023','2024'];
   const bagrut=[84,85.5,87,88.2,90,91.8];       /* זכאות בגרות */
@@ -754,7 +780,7 @@ function drawMuniTrend(p) {
   line(bagrut,80,95,INK,2.5,false);
   line(atzmi,44,62,GRAY,1.8,true);
   if(p>0.9){
-    x.textAlign='left';x.font='10px Assistant';
+    x.textAlign='left';x.font='10px Heebo';
     x.fillStyle=INK;x.fillText('זכאות בגרות 91.8%',pad.l+2,pad.t+8);
     x.fillStyle=GRAY;x.fillText('הכנסות עצמיות 57.7%',pad.l+2,pad.t+22);
   }
@@ -763,7 +789,7 @@ function drawMuniTrend(p) {
 /* ReMark: city file — stability dial + metric bars */
 function drawRemark(p) {
   const c = document.getElementById('chartRemark'); const x = fitC(c);
-  const W=c.width,H=c.height; x.clearRect(0,0,W,H);
+  const W=c.clientWidth,H=c.clientHeight; x.clearRect(0,0,W,H);
   /* dial: ציון יציבות 58 */
   const cx=W-70, cy=68, R=46, lw=8;
   x.beginPath();x.arc(cx,cy,R,0,Math.PI*2);x.strokeStyle='rgba(23,23,23,0.08)';x.lineWidth=lw;x.stroke();
@@ -771,12 +797,12 @@ function drawRemark(p) {
   x.strokeStyle=INK;x.lineWidth=lw;x.lineCap='round';x.stroke();
   x.fillStyle=INK;x.font='300 30px Poppins';x.textAlign='center';
   x.fillText(Math.round(58*p),cx,cy+9);
-  x.font='11px Assistant';x.fillStyle=GRAY;x.fillText('ציון יציבות',cx,cy+R+20);
+  x.font='11px Heebo';x.fillStyle=GRAY;x.fillText('ציון יציבות',cx,cy+R+20);
   /* headline number */
   x.textAlign='right';
   x.fillStyle=INK;x.font='300 40px Poppins';
   x.fillText((30.6*p).toFixed(1), W-160, 62);
-  x.font='12px Assistant';x.fillStyle=GRAY;
+  x.font='12px Heebo';x.fillStyle=GRAY;
   x.fillText('חודשי ספיגה · זמן מדף', W-160, 84);
   /* bars */
   const bars=[
@@ -787,7 +813,7 @@ function drawRemark(p) {
   const bx=24, bw=W-48, y0=150, gap=52;
   bars.forEach((b,i)=>{
     const y=y0+i*gap;
-    x.textAlign='right';x.fillStyle=INK;x.font='600 13px Assistant';
+    x.textAlign='right';x.fillStyle=INK;x.font='600 13px Heebo';
     x.fillText(b.l, W-24, y);
     x.textAlign='left';x.fillStyle=INK;x.font='300 13px Poppins';
     x.fillText(Math.round(b.v*p)+'/100', bx, y);
@@ -795,46 +821,67 @@ function drawRemark(p) {
     x.fillRect(bx, y+8, bw, 5);
     x.fillStyle=INK;
     x.fillRect(bx+bw-(bw*(b.v/100)*p), y+8, bw*(b.v/100)*p, 5);
-    x.textAlign='right';x.fillStyle=GRAY;x.font='11px Assistant';
+    x.textAlign='right';x.fillStyle=GRAY;x.font='11px Heebo';
     x.fillText(b.note, W-24, y+28);
   });
 }
 
-/* Covenant: donut (mono) */
+/* Covenant: rating trajectory (mono step chart) */
 function drawCovenant(p) {
   const c = document.getElementById('chartCovenant'); const x = fitC(c);
-  const W=c.width,H=c.height; x.clearRect(0,0,W,H);
-  const cx=W/2, cy=H/2, R=Math.min(W,H)*.32, lw=24;
-  const segs=[{v:.93,col:INK,label:'עמידה מלאה'},{v:.05,col:'#9a9a9a',label:'חלקית'},{v:.02,col:'#d5d2cb',label:'אי עמידה'}];
-  let a=-Math.PI/2;
-  segs.forEach(s=>{
-    const sw=s.v*Math.PI*2*p;
-    x.beginPath();x.arc(cx,cy,R,a,a+sw);
-    x.strokeStyle=s.col;x.lineWidth=lw;x.stroke();
-    a+=sw;
-  });
-  x.fillStyle=INK;x.font='300 42px Poppins';x.textAlign='center';
-  x.fillText(Math.round(93*p)+'%',cx,cy+8);
-  x.font='12px Assistant';x.fillStyle=GRAY;x.fillText('עמידה בהתחייבויות',cx,cy+32);
-  x.font='11px Assistant';x.textAlign='right';
-  segs.forEach((s,i)=>{
-    const ly=H-56+i*17;
-    x.fillStyle=s.col;x.fillRect(W-14,ly-8,10,10);
-    x.fillStyle=GRAY;x.fillText(s.label,W-20,ly+1);
-  });
+  const W=c.clientWidth,H=c.clientHeight; x.clearRect(0,0,W,H);
+  const pad={l:34,r:14,t:40,b:30}, cW=W-pad.l-pad.r, cH=H-pad.t-pad.b;
+  const pts=[
+    {d:'03.24',r:0,lab:'ilA+'},
+    {d:'12.24',r:0,lab:'ilA+',sub:'אופק שלילי'},
+    {d:'03.25',r:1,lab:'ilA'},
+    {d:'07.25',r:2,lab:'ilBBB'},
+    {d:'09.25',r:3,lab:'ilB'},
+    {d:'01.26',r:4,lab:'ilCCC'},
+    {d:'06.26',r:5,lab:'הסדר חוב',sub:'אירוע אשראי'}
+  ];
+  const n=pts.length, maxR=5;
+  const gx=i=>pad.l+(i/(n-1))*cW, gy=r=>pad.t+(r/maxR)*cH;
+  x.strokeStyle=GRID;
+  for(let i=0;i<=2;i++){const y=pad.t+cH/2*i;x.beginPath();x.moveTo(pad.l,y);x.lineTo(W-pad.r,y);x.stroke();}
+  const k=Math.max(1,Math.ceil(n*p));
+  x.beginPath();
+  for(let i=0;i<k;i++){const px=gx(i),py=gy(pts[i].r); i===0?x.moveTo(px,py):x.lineTo(px,py);}
+  x.strokeStyle=INK;x.lineWidth=2;x.lineJoin='round';x.stroke();
+  x.textAlign='center';
+  for(let i=0;i<k;i++){
+    const px=gx(i), py=gy(pts[i].r), isLast=i===n-1;
+    x.beginPath();x.arc(px,py,isLast?4.5:3,0,Math.PI*2);
+    x.fillStyle=isLast?INK:'#fff';x.strokeStyle=INK;x.lineWidth=1.6;x.fill();x.stroke();
+    x.font='9px IBM Plex Mono';x.fillStyle=GRAY;
+    x.fillText(pts[i].d,px,H-8);
+    x.textAlign=isLast?'right':'center';
+    const lx=isLast?px+3:px;
+    x.font=(isLast?'700 ':'600 ')+'11px Heebo';x.fillStyle=isLast?INK:'#3a3a3a';
+    x.direction='ltr';x.fillText(pts[i].lab,lx,py-12);x.direction='inherit';
+    if(pts[i].sub){x.font='9px Heebo';x.fillStyle=GRAY;x.fillText(pts[i].sub,lx,py-24);}
+    x.textAlign='center';
+  }
+  if(p>0.92){
+    x.textAlign='right';
+    x.font='300 22px Poppins';x.fillStyle=INK;
+    x.fillText('18 חודשים',W-14,20);
+    x.font='9px Heebo';x.fillStyle=GRAY;
+    x.fillText('מאיתות ראשון להסדר חוב',W-14,34);
+  }
 }
 
 /* Tube: daily bars (mono) */
 function drawTube(p) {
   const c = document.getElementById('chartTube'); const x = fitC(c);
-  const W=c.width,H=c.height; x.clearRect(0,0,W,H);
+  const W=c.clientWidth,H=c.clientHeight; x.clearRect(0,0,W,H);
   const pad={l:40,r:16,t:20,b:32}, cW=W-pad.l-pad.r, cH=H-pad.t-pad.b;
   const days=['א','ב','ג','ד','ה','ו','ש'];
   const views=[24,27,26,31,29,33,31.3];
   const bw=cW/days.length*.55;
   x.strokeStyle=GRID;
   for(let i=0;i<=3;i++){const y=pad.t+cH/3*i;x.beginPath();x.moveTo(pad.l,y);x.lineTo(W-pad.r,y);x.stroke();}
-  x.font='11px Assistant';x.fillStyle=GRAY;x.textAlign='center';
+  x.font='11px Heebo';x.fillStyle=GRAY;x.textAlign='center';
   days.forEach((d,i)=>{
     const bx=pad.l+(i+.5)/days.length*cW;
     x.fillText(d,bx,H-10);
@@ -853,7 +900,7 @@ function drawTube(p) {
 /* Influence: momentum line (mono) */
 function drawInfluence(p) {
   const c = document.getElementById('chartInfluence'); const x = fitC(c);
-  const W=c.width,H=c.height; x.clearRect(0,0,W,H);
+  const W=c.clientWidth,H=c.clientHeight; x.clearRect(0,0,W,H);
   const pad={l:36,r:16,t:20,b:30}, cW=W-pad.l-pad.r, cH=H-pad.t-pad.b;
   const data=[12,18,15,26,32,28,41,48], n=data.length;
   const gx=i=>pad.l+(i/(n-1))*cW, gy=v=>pad.t+cH-(v/52)*cH;
@@ -877,7 +924,7 @@ function drawInfluence(p) {
 /* Signal: radar (mono) */
 function drawSignal(p) {
   const c = document.getElementById('chartSignal'); const x = fitC(c);
-  const W=c.width,H=c.height; x.clearRect(0,0,W,H);
+  const W=c.clientWidth,H=c.clientHeight; x.clearRect(0,0,W,H);
   const cx=W/2, cy=H/2+6, R=Math.min(W,H)*.33;
   const labels=['Consistency','Evidence','Focus','Lexical','Redundancy'];
   const vals=[.61,.95,.42,.99,.55], n=5;
